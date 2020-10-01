@@ -1,5 +1,7 @@
 package com.arindam.microservice.exception;
 
+import com.arindam.microservice.exception.custom.CustomExceptionResponse;
+import com.arindam.microservice.exception.custom.UserNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

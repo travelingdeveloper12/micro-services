@@ -1,4 +1,4 @@
-package com.arindam.microservice.repository;
+package com.arindam.microservice.service;
 
 import com.arindam.microservice.entity.User;
 import org.springframework.stereotype.Service;

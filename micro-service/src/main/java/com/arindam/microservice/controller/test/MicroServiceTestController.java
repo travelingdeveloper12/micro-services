@@ -1,6 +1,6 @@
-package com.arindam.microservice.controller;
+package com.arindam.microservice.controller.test;
 
-import com.arindam.microservice.entity.MicroServiceTestBean;
+import com.arindam.microservice.entity.test.MicroServiceTestBean;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

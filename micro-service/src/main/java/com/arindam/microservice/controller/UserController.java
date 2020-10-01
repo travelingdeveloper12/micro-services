@@ -1,8 +1,8 @@
 package com.arindam.microservice.controller;
 
 import com.arindam.microservice.entity.User;
-import com.arindam.microservice.exception.UserNotFoundException;
-import com.arindam.microservice.repository.UserDaoService;
+import com.arindam.microservice.exception.custom.UserNotFoundException;
+import com.arindam.microservice.service.UserDaoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

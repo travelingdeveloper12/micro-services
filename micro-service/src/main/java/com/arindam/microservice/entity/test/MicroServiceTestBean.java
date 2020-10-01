@@ -1,4 +1,4 @@
-package com.arindam.microservice.entity;
+package com.arindam.microservice.entity.test;
 
 public class MicroServiceTestBean {
     private String message;

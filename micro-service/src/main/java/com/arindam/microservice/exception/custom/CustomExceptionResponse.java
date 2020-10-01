@@ -1,4 +1,4 @@
-package com.arindam.microservice.exception;
+package com.arindam.microservice.exception.custom;
 
 import java.util.Date;
 
