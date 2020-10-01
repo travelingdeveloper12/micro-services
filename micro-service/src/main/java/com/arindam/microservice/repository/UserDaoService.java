@@ -12,4 +12,8 @@ public class UserDaoService {
         return new ArrayList<>();
     }
 
+    public User save(User user) {
+        return new User();
+    }
+
 }
