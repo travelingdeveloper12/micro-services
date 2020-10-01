@@ -16,4 +16,8 @@ public class UserDaoService {
         return new User();
     }
 
+    public User getUserById(int id) {
+        return new User();
+    }
+
 }
