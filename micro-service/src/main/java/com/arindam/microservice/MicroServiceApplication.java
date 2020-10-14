@@ -30,5 +30,4 @@ public class MicroServiceApplication {
         resourceBundleMessageSource.setBasename("messages");
         return resourceBundleMessageSource;
     }
-
 }
