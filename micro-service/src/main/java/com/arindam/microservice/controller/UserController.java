@@ -4,12 +4,19 @@ import com.arindam.microservice.entity.User;
 import com.arindam.microservice.exception.custom.UserNotFoundException;
 import com.arindam.microservice.service.UserDaoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.CollectionModel;
+import org.springframework.hateoas.Link;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
+
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
 @RequestMapping(value = "/microservice/user")
@@ -24,16 +31,20 @@ public class UserController {
     }
 
     @GetMapping(path = "/get/{id}")
-    public User getUserById(@PathVariable int id) {
+    public CollectionModel<User> getUserById(@PathVariable int id) {
         User u = userDaoService.getUserById(id);
         if (u == null) {
             throw new UserNotFoundException("User Id :" + id);
         }
-        return u;
+        List<User> user = new ArrayList<>();
+        user.add(u);
+        Link link = linkTo(methodOn(this.getClass()).getAllUsers()).withSelfRel();
+        CollectionModel<User> collectionResult = new CollectionModel<>(user, link);
+        return collectionResult;
     }
 
     @PostMapping(path = "/create")
-    public ResponseEntity<Object> createUser(@RequestBody User user) {
+    public ResponseEntity<Object> createUser(@Valid @RequestBody User user) {
         User u = userDaoService.save(user);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("{/id}").buildAndExpand(u.getId()).toUri();
         return ResponseEntity.created(location).build();

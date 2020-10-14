@@ -8,12 +8,13 @@ import java.util.List;
 
 @Service
 public class UserDaoService {
+
     public List<User> getAllUsers() {
         return new ArrayList<>();
     }
 
     public User save(User user) {
-        return new User();
+        return new  User();
     }
 
     public User getUserById(int id) {
