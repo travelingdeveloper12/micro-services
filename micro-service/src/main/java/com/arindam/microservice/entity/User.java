@@ -1,5 +1,7 @@
 package com.arindam.microservice.entity;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -7,6 +9,7 @@ import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 import java.util.Date;
 
+@JsonFilter("UserFilterProvider")
 @ApiModel(description = "All details about the user.")
 public class User {
 
@@ -18,7 +21,10 @@ public class User {
 
     @Past
     @ApiModelProperty(notes = "Birth date should be in the past.")
+    @JsonIgnore
     private Date dob;
+
+    private UserInformation userInformation;
 
     public User() {
     }
@@ -51,6 +57,14 @@ public class User {
 
     public void setDob(Date dob) {
         this.dob = dob;
+    }
+
+    public UserInformation getUserInformation() {
+        return userInformation;
+    }
+
+    public void setUserInformation(UserInformation userInformation) {
+        this.userInformation = userInformation;
     }
 
     @Override
